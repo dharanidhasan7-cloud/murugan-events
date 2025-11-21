@@ -772,6 +772,63 @@ nav ul li a {
 }
 }
 
+/* ---------------- MOBILE HEADER FIX ---------------- */
+@media (max-width: 768px) {
+
+/* Make header vertical stack */
+.nav {
+  flex-direction: column;
+  align-items: flex-start !important;
+  gap: 10px !important;
+}
+
+/* Logo left side normal */
+.brand {
+  width: 100%;
+}
+
+/* Move tagline under logo */
+.brand .muted {
+  margin-top: 6px;
+  font-size: 14px !important;
+}
+
+/* Book on WhatsApp button below tagline */
+.cta {
+  margin-top: 8px;
+  width: auto;
+}
+
+/* Put hamburger under the WhatsApp button */
+.hamburger {
+  display: block !important;
+  margin-top: 8px;
+  font-size: 26px !important;
+  color: #ffd86b !important;
+}
+
+/* Make nav menu appear BELOW hamburger */
+nav ul {
+  position: relative;
+  top: 10px;  /* pushes menu downward */
+}
+
+/* Slide down animation for menu */
+nav ul.show {
+  animation: slideDownMenu 0.3s ease forwards;
+}
+
+@keyframes slideDownMenu {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+}
 
   </style>
 </head>
@@ -801,6 +858,7 @@ nav ul li a {
           <a class="cta" href="https://wa.me/7305200920" target="_blank" rel="noopener">
             <strong>Book on WhatsApp</strong>
           </a>
+          
           <button class="hamburger" aria-label="menu" onclick="toggleNav()">☰</button>
           </nav>
         </div>
@@ -1189,5 +1247,4 @@ box-shadow:0 0 12px rgba(212,175,55,0.3);
             }
             </script>
             
-
         
