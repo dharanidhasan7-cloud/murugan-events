@@ -1,0 +1,950 @@
+<!--
+Murugan Decor and Events - Single-file Website Template
+Theme: Black + Gold (Premium)
+Includes: Home, Services, Gallery, About, Contact, WhatsApp booking button, responsive layout, simple JS for mobile nav & gallery modal
+Instructions: Save this file as `index.html`. Replace placeholders (images, phone number, email) with your real content. Logo is text-based and styled in the header. 
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Murugan Decor and Events</title>
+  <meta name="description" content="Murugan Decor and Events — Balloon decoration & live food counters: popcorn, cotton candy, pani puri, chocolate fountain and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+   
+
+    :root{
+      --bg:#0b0b0b; /* deep black */
+      --card:#0f0f0f;
+      --gold:#d4af37; /* gold accent */
+      --muted:#bfbfbf;
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+      --max-w:1100px;
+      font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color-scheme: dark;
+    }
+    
+
+    /* POP-UP MENU ON PAGE LOAD */
+nav ul li {
+  opacity: 100;
+  transform: scale(0.6);
+  animation: popup 0.5s ease forwards;
+}
+
+nav ul li:nth-child(1) { animation-delay: 0.1s; }
+nav ul li:nth-child(2) { animation-delay: 0.2s; }
+nav ul li:nth-child(3) { animation-delay: 0.3s; }
+nav ul li:nth-child(4) { animation-delay: 0.4s; }
+nav ul li:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes popup {
+  0% { opacity: 0; transform: scale(0.5); }
+  60% { opacity: 1; transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* HOVER ANIMATION + GOLD GLOW */
+nav ul li a {
+  color: var(--gold);
+  padding: 6px 12px;
+  display: inline-block;
+  transition: 0.3s ease;
+}
+
+nav ul li a:hover {
+  transform: translateY(-5px) scale(1.05);
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255,215,0,0.8),
+               0 0 20px rgba(255,215,0,0.5);
+}
+
+/* UNDERLINE EFFECT ON HOVER */
+nav ul li a::after {
+  content: "";
+  width: 0;
+  height: 2px;
+  background: var(--gold);
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  transition: 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+/* CLICK ANIMATION */
+nav ul li a:active {
+  transform: scale(0.92);
+  filter: brightness(150%);
+  text-shadow: 0 0 15px rgba(255,215,0,1);
+  
+}
+
+
+
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg, var(--bg), #050505);color:#fff}
+    a{color:var(--gold);text-decoration:none}
+    .container{max-width:var(--max-w);margin:0 auto;padding:28px}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:40;background:linear-gradient(180deg, rgba(11,11,11,0.85), rgba(11,11,11,0.6));backdrop-filter: blur(6px);border-bottom:1px solid rgba(255,255,255,0.03)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{display:flex;flex-direction:column;gap:2px}
+    .logo .name{font-weight:800;letter-spacing:0.6px;font-size:40px;color:var(--gold)}
+    .logo .sub{font-size:22px;color:var(--muted);text-transform:uppercase}
+    nav ul{display:flex;gap:18px;align-items:center;margin:0;padding:0;list-style:none}
+    nav li{font-weight:500}
+    .cta{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg, rgba(212,175,55,0.12), rgba(212,175,55,0.06));border:1px solid rgba(212,175,55,0.12)}
+
+    /* Mobile */
+    .hamburger{display:none;border:0;background:none;color:var(--muted);font-size:20px}
+    @media(max-width:900px){nav ul{display:none}.hamburger{display:block}}
+
+    /* Hero */
+    .hero{padding:56px 0;display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center}
+    .hero .intro h1{margin:0;font-size:40px;line-height:1.02}
+    .hero p.lead{color:var(--muted);margin:12px 0 18px}
+    .hero .actions{display:flex;gap:12px}
+    .btn{padding:12px 18px;border-radius:12px;font-weight:600;border:1px solid rgba(255,255,255,0.06);background:transparent}
+    .btn.primary{background:linear-gradient(90deg,var(--gold), #c89f2a);color:#0b0b0b;border:0}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:16px;border:1px solid rgba(255,255,255,0.03)}
+
+    /* Services */
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+    .service{padding:16px;border-radius:12px;background:var(--glass);border:1px solid rgba(255,255,255,0.02)}
+    .service h4{margin:8px 0}
+
+    @media(max-width:900px){.hero{grid-template-columns:1fr;}.services{grid-template-columns:1fr 1fr}}
+    @media(max-width:560px){.services{grid-template-columns:1fr}}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .gallery img{width:100%;height:140px;object-fit:cover;border-radius:8px;cursor:pointer}
+    @media(max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}}
+
+    /* About & contact */
+    .about{display:flex;gap:18px;align-items:center;margin-top:26px}
+    .about .txt{flex:1}
+    .contact{display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:18px}
+
+    /* Footer */
+    footer{text-align:center;padding:28px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02);margin-top:36px}
+
+    /* Small helpers */
+    .muted{color:var(--muted)}
+    .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(212,175,55,0.08);color:var(--gold);font-weight:600}
+
+    /* Modal */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:90}
+    .modal .modal-body{max-width:900px;width:95%;background:var(--card);padding:18px;border-radius:12px}
+
+    /* Simple form */
+    input,textarea{width:100%;padding:12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff}
+    label{display:block;margin-bottom:6px;font-size:13px;color:var(--muted)}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    @media(max-width:760px){.contact{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}}
+
+    /* subtle animation */
+    .fade-up{opacity:0;transform:translateY(8px);transition:all .5s ease}
+    .fade-up.show{opacity:1;transform:none}
+    /* WhatsApp Button Pop Animation */
+.cta {
+  position: relative;
+  animation: btnPop 0.6s ease forwards;
+  transition: 0.25s;
+}
+
+.cta:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 18px rgba(212, 175, 55, 0.6);
+}
+
+.cta:active {
+  transform: scale(0.95);
+}
+
+/* popup animation */
+@keyframes btnPop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.service-box {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  transform: translateY(0px);
+}
+.service-box {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  transform: translateY(0px);
+}
+
+.service-box:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0px 0px 20px rgba(255, 215, 0, 0.7);
+  cursor: pointer;
+}
+
+.service-box:active {
+  transform: scale(0.97);
+}
+/* POP-UP animation */
+.service {
+  animation: pop 0.5s ease forwards;
+  transform: scale(0.85);
+  background: #ffffff15;   /* light white background */
+  backdrop-filter: blur(3px);
+  transition: all 0.3s ease;
+}
+
+/* Hover glow */
+.service:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  background: #ffffff25;
+}
+
+/* Keyframes */
+@keyframes pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+/* GLOW EFFECT FOR TAG LINE */
+.tag {
+  animation: glowTag 1.8s ease-in-out infinite alternate;
+  border: 1px solid rgba(255, 215, 0, 0.5);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+}
+
+@keyframes glowTag {
+  0% {
+    box-shadow: 0 0 6px rgba(255, 215, 0, 0.4),
+                0 0 12px rgba(255, 215, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 12px rgba(255, 215, 0, 1),
+                0 0 24px rgba(255, 215, 0, 0.8),
+                0 0 36px rgba(255, 215, 0, 0.6);
+  }
+}
+
+/* QUICK CONTACT WHATSAPP BUTTON – GOLD BOUNCE + GLOW */
+.quickwa {
+  animation: goldBounce 1.2s ease-out forwards;
+  transform: scale(0.8);
+  opacity: 0;
+}
+
+/* Gold bounce on page load */
+@keyframes goldBounce {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.25);
+    opacity: 1;
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.9),
+                0 0 45px rgba(212, 175, 55, 0.7);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Glow when touched */
+.quickwa:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 18px rgba(251, 229, 154, 0.9),
+              0 0 32px rgba(212, 175, 55, 0.8),
+              0 0 45px rgba(212, 175, 55, 0.6);
+}
+
+/* SEE GALLERY – POP-UP + GOLD GLOW + WHITE BOX */
+.gallerybtn {
+  background: rgb(0, 0, 0);
+  color: #ffffff; /* gold text */
+  border: 2px solid #d4af37;
+  border-radius: 12px;
+  font-weight: 600;
+
+  
+}
+
+/* POP-UP ANIMATION */
+@keyframes galleryPop {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 1;
+    box-shadow: 0 0 18px rgba(212, 175, 55, 0.8),
+                0 0 35px rgba(212, 175, 55, 0.6);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* GOLD GLOW WHEN TOUCHED */
+.gallerybtn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.9),
+              0 0 35px rgba(212, 175, 55, 0.6);
+  color: #ffffff;
+}
+/* INFO BOX STYLE (gold glow + white box + rounded) */
+.quote-box {
+  background: #ffffff;
+  color: #000;
+  padding: 18px 20px;
+  border-radius: 14px;
+  border-left: 5px solid #d4af37;
+  margin-top: 12px;
+  font-size: 16px;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.7);
+  animation: slideDown 0.4s ease forwards;
+}
+
+/* Slide-down animation */
+@keyframes slideDown {
+  0% { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Slide-up (hide) animation */
+@keyframes slideUp {
+  0% { opacity: 1; height: auto; transform: translateY(0); }
+  100% { opacity: 0; height: 0; transform: translateY(-10px); }
+}
+
+
+/* Freer, airy paragraph style */
+.lead {
+  line-height: 1.75;      /* more breathing space */
+  font-size: 18px;        /* slightly bigger, clean look */
+  letter-spacing: 0.3px;  /* more open feel */
+  word-spacing: 2px;      /* spreads the sentence nicely */
+  max-width: 720px;       /* wider layout */
+}
+
+/* Make heading section also breathe */
+.intro {
+  max-width: 760px;       /* increase width of hero text container */
+  padding-right: 10px;    /* avoid cramped right side */
+}
+.actions {
+  margin-top: 42px !important;
+}
+.hero .intro {
+  padding: 28px 22px !important;        /* thicker padding */
+  background: rgba(255, 255, 255, 0.05); /* more visible background */
+  border-radius: 18px;                   /* smoother curve */
+  border: 1.6px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 22px rgba(212, 175, 55, 0.15); /* soft gold glow */
+}
+.card {
+  padding: 26px !important;                /* thicker padding */
+  border-radius: 20px !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  border: 2px solid rgba(212, 175, 55, 0.25) !important;
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.25); /* stronger glow */
+}
+:root {
+  --max-w: 1400px;   /* previously 1100px */
+}
+/* Fix menu alignment */
+.nav {
+  display: flex;
+  align-items: center;   /* vertically center ALL items */
+  justify-content: space-between;
+}
+
+/* Align nav items in a perfect line */
+nav ul {
+  display: flex;
+  align-items: center;   /* align all menu items evenly */
+  gap: 32px;             /* even spacing between items */
+}
+
+.card {
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.18) !important;
+}
+body, html {
+  background: #0b0b0b !important;
+}
+
+main, section, .hero {
+  background: transparent !important;
+}
+.hero {
+  gap: 12px !important;
+}
+.hero {
+  gap: 10px !important;   /* reduce spacing between hero and quick contact */
+}
+.hero {
+  grid-template-columns: 1.8fr 520px !important;
+}
+
+
+.tag {
+  margin-bottom: 18px !important;   /* space between tag and heading */
+}
+
+/* GALLERY BUTTON PREMIUM ANIMATION */
+.gallery-folder-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #ffffff10;
+  border: 2px solid #d4af37;
+  padding: 16px 26px;
+  border-radius: 14px;
+  text-decoration: none;
+  color: #ffd86b;
+  font-size: 18px;
+  font-weight: 600;
+  transition: 0.35s ease;
+  animation: galleryPop 0.6s ease forwards;
+  transform: scale(0.7);
+  opacity: 0;
+}
+
+/* POP-UP animation (entry) */
+@keyframes galleryPop {
+  0% { transform: scale(0.4); opacity: 0; }
+  60% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* GOLD GLOW on hover */
+.gallery-folder-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(212,175,55,0.8),
+               0 0 35px rgba(212,175,55,0.6),
+               0 0 50px rgba(212,175,55,0.4);
+  color: #fff;
+}
+
+/* Slight click effect */
+.gallery-folder-btn:active {
+  transform: scale(0.92);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Golden Divider Line */
+.gold-divider {
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(212,175,55,0) 0%, #d4af37 50%, rgba(212,175,55,0) 100%);
+  margin: 40px 0;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(212,175,55,0.7),
+              0 0 20px rgba(212,175,55,0.4);
+  animation: glowLine 2s infinite alternate ease-in-out;
+}
+
+/* Glow animation */
+@keyframes glowLine {
+  0% {
+    box-shadow: 0 0 10px rgba(212,175,55,0.4);
+  }
+  100% {
+    box-shadow: 0 0 24px rgba(212,175,55,1);
+  }
+}
+/* ICON STYLE */
+.icon {
+  width: 26px;
+  height: 26px;
+  margin-right: 10px;
+  filter: drop-shadow(0 0 4px rgba(255,215,0,0.6));
+}
+
+/* Fade-in on scroll */
+.fade-contact {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+}
+
+.fade-contact.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Floating Icons */
+.float-ico {
+  position: fixed;
+  right: 22px;
+  z-index: 999;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #d4af37;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 18px rgba(212,175,55,0.8);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.float-ico:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 30px rgba(212,175,55,1);
+}
+
+#floatWA {
+  bottom: 90px;
+}
+
+#floatIG {
+  bottom: 20px;
+}
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="brand">
+          <div class="logo">
+            <div class="name">MURUGAN</div>
+            <div class="sub">Decor & Events</div>
+          </div>
+          <div style="margin-left:8px;">
+            <div class="muted" style="font-size:17px">Balloon Decor & Live Food Counters</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px">
+          <nav>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#gallery">Gallery</a></li>
+              <li><a href="#about">Price Details</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+
+          <a class="cta" href="https://wa.me/7305200920" target="_blank" rel="noopener">
+            <strong>Book on WhatsApp</strong>
+          </a>
+          <button class="hamburger" aria-label="menu" onclick="toggleNav()">☰</button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- GOLD DIVIDER LINE -->
+<div class="gold-divider"></div>
+
+  <main class="container" id="home">
+    <section class="hero">
+      <div class="intro fade-up show">
+        <div class="tag">Events • Parties • Live Counters</div>
+        
+        <h1><span style="color:var(--gold)">Balloon Decor & Live Food Counters</span></h1>
+        <p class="lead">We create joyful moments — colourful balloon installations and fun live food counters like popcorn, cotton candy, pani-puri and chocolate fountain for birthdays, weddings and corporate events.</p>
+        <!-- START: Why Choose Us - Option 4 -->
+<div style="
+margin-top:18px;
+background:rgba(255,255,255,0.03);
+padding:18px;
+border-radius:14px;
+border-left:4px solid #d4af37;
+box-shadow:0 0 12px rgba(212,175,55,0.3);
+">
+<h3 style="margin:0 0 10px;color:#d4af37;">Why Choose Us?</h3>
+
+<p style="margin:6px 0;color:#ccc;">🎈 Stylish & creative balloon setups for all events</p>
+<p style="margin:6px 0;color:#ccc;">🍿 Live food counters like popcorn, cotton candy, pani puri & more</p>
+<p style="margin:6px 0;color:#ccc;">💛 Premium quality materials + professional team</p>
+<p style="margin:6px 0;color:#ccc;">✨ Affordable packages with clean, neat, on-time service</p>
+<p style="margin:6px 0;color:#ccc;">📸 Perfect decor that makes your event photo-ready</p>
+</div>
+<!-- END: Why Choose Us - Option 4 -->
+
+        <div class="actions">
+          <a class="btn gallerybtn" href="#gallery">See Gallery</a>
+        </div>
+
+        <div style="margin-top:18px" class="card">
+          <strong>Popular package:</strong> Birthday Special — Balloon arch + Popcorn & Cotton Candy Counter. <br>
+          <small class="muted">Custom packages available. Discounts for school & community events.</small>
+        </div>
+      </div>
+
+      <aside class="card" style="height:50%">
+        <h3 style="margin:0 0 8px 0">Quick Contact</h3>
+        <p class="muted" style="margin:0 0 12px">Message us on WhatsApp for fast booking</p>
+        <a class="btn primary quickwa" href="https://wa.me/7305200920" target="_blank" rel="noopener">WhatsApp: +91 7305200920</a>
+
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:14px 0" />
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <div style="min-width:150px;">
+            <h4 style="margin:0">Services</h4>
+            <p class="muted" style="margin:6px 0 0">Balloon decor, arches, columns, photo-frames, table decors</p>
+          </div>
+          <div style="min-width:110px;">
+            <h4 style="margin:0">Live Counters</h4>
+            <p class="muted" style="margin:6px 0 0">Popcorn, Cotton Candy, Pani Puri, Chocolate Fountain & more</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+    <!-- GOLD DIVIDER LINE -->
+<div class="gold-divider"></div>
+
+
+    <!-- Services -->
+    <section id="services" style="margin-top:28px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <h2 style="margin:0">Our Services</h2>
+        <div class="muted">Custom packages available • Free consultation</div>
+      </div>
+
+      <div class="services">
+        <div class="service">
+          <h4>Balloon Decorations</h4>
+          <p class="muted">Stage backdrops, arches, garlands, thematic designs, helium balloons.</p>
+        </div>
+        <div class="service">
+          <h4>Popcorn Counter</h4>
+          <p class="muted">Freshly popped popcorn with salt/sweet/flavour options. Ideal for kids' parties.</p>
+        </div>
+        <div class="service">
+          <h4>Cotton Candy Counter</h4>
+          <p class="muted">Fluffy cotton candy made live in flavours & colours of your choice.</p>
+        </div>
+        <div class="service">
+          <h4>Pani Puri Live Counter</h4>
+          <p class="muted">Hygienic live pani-puri station with tasty chutneys and fillings.</p>
+        </div>
+        <div class="service">
+          <h4>Chocolate Fountain</h4>
+          <p class="muted">3-tier chocolate fountain with fresh fruit, marshmallows & dipping items.</p>
+        </div>
+        <div class="service">
+          <h4>Custom Event Packages</h4>
+          <p class="muted">Birthday, Baby shower, Corporate & School events. Tell us your idea — we'll bring it to life.</p>
+        </div>
+      </div>
+    </section>
+    <!-- GOLD DIVIDER LINE -->
+<div class="gold-divider"></div>
+    <!-- Gallery -->
+<section id="gallery" style="margin-top:28px; color:white;">
+
+    <!-- Title + Subtitle -->
+    <div style="margin-bottom:25px;">
+      <h2 style="
+        font-size:40px;
+        margin:0;
+        color:#FFD700;
+        font-weight:800;
+      ">
+        Gallery
+      </h2>
+  
+      <p style="
+        margin:5px 0 0;
+        font-size:18px;
+        color:#ccc;
+      ">
+        Our balloon decor and live food counters
+      </p>
+    </div>
+  
+    <!-- Image Grid -->
+    <div style="
+      display:flex;
+      flex-wrap:wrap;
+      gap:20px;
+    ">
+      
+  
+  
+    <!-- ⭐ PLACE BUTTONS HERE (OUTSIDE IMAGE GRID) -->
+  
+    <!-- Balloon Gallery Button -->
+    <div style="margin-top: 35px; display:flex; justify-content:center;">
+      <a href="balloon-gallery.html" class="gallery-folder-btn"
+         style="
+           display:flex;
+           align-items:center;
+           gap:14px;
+           background:#ffffff10;
+           border:2px solid #d4af37;
+           padding:16px 26px;
+           border-radius:14px;
+           text-decoration:none;
+           color:#ffd86b;
+           font-size:18px;
+           font-weight:600;
+           transition:0.3s;
+         ">
+        <img src="your-balloon-thumbnail.jpg"
+             style="width:55px; height:55px; border-radius:8px; object-fit:cover;">
+        See All Balloon Decoration Photos →
+      </a>
+    </div>
+  
+    <!-- Live Food Counter Button -->
+    <div style="margin-top: 25px; display:flex; justify-content:center;">
+      <a href="live-food-counter.html" class="gallery-folder-btn"
+         style="
+           display:flex;
+           align-items:center;
+           gap:14px;
+           background:#ffffff10;
+           border:2px solid #d4af37;
+           padding:16px 26px;
+           border-radius:14px;
+           text-decoration:none;
+           color:#ffd86b;
+           font-size:18px;
+           font-weight:600;
+           transition:0.3s;
+         ">
+        <img src="your-food-thumbnail.jpg"
+             style="width:55px; height:55px; border-radius:8px; object-fit:cover;">
+        See Live Food Counter Photos →
+      </a>
+    </div>
+    <!-- Games Button -->
+<div style="margin-top: 25px; display:flex; justify-content:center;">
+    <a href="games-gallery.html" class="gallery-folder-btn"
+       style="
+         display:flex;
+         align-items:center;
+         gap:14px;
+         background:#ffffff10;
+         border:2px solid #d4af37;
+         padding:16px 26px;
+         border-radius:14px;
+         text-decoration:none;
+         color:#ffd86b;
+         font-size:18px;
+         font-weight:600;
+         transition:0.35s ease;
+       ">
+  
+       <img src="your-game-thumbnail.jpg"
+            style="width:55px; height:55px; border-radius:8px; object-fit:cover;">
+  
+       See Games Photos →
+    </a>
+  </div>
+  
+  
+  </section>
+  <!-- GOLD DIVIDER LINE -->
+<div class="gold-divider"></div>
+  <!-- PRICE DETAILS SECTION -->
+<section id="about" style="margin-top:50px; color:white;">
+
+    <h2 style="
+        font-size:40px;
+        margin:0 0 15px;
+        color:#FFD700;
+        font-weight:800;
+        text-align:center;
+    ">
+      Price Details
+    </h2>
+  
+    <p style="
+        text-align:center;
+        color:#ccc;
+        margin-bottom:25px;
+        font-size:18px;
+    ">
+      Transparent and affordable pricing for all services
+    </p>
+  
+    <div style="
+        max-width:900px;
+        margin:auto;
+        background:#ffffff10;
+        padding:25px;
+        border-radius:16px;
+        border:2px solid #d4af37;
+        box-shadow:0 0 15px rgba(212,175,55,0.3);
+    ">
+  
+      <h3 style="color:#ffd86b;">Balloon Decorations</h3>
+      <ul style="line-height:1.8; color:#ddd;">
+        <li>Basic Balloon Arch – ₹1,999</li>
+        <li>Theme Balloon Decor – ₹2,999 – ₹5,999</li>
+        <li>Premium Backdrop Setup – ₹4,999 – ₹12,000</li>
+      </ul>
+  
+      <h3 style="color:#ffd86b; margin-top:20px;">Live Food Counters</h3>
+      <ul style="line-height:1.8; color:#ddd;">
+        <li>Popcorn Counter – ₹1,499</li>
+        <li>Cotton Candy Counter – ₹1,299</li>
+        <li>Pani Puri Live Counter – ₹2,499</li>
+        <li>Chocolate Fountain – ₹3,000 – ₹5,000</li>
+      </ul>
+  
+      <h3 style="color:#ffd86b; margin-top:20px;">Games & Fun Activities</h3>
+      <ul style="line-height:1.8; color:#ddd;">
+        <li>Ring Toss Game – ₹999</li>
+        <li>Balloon Shooting – ₹1,299</li>
+        <li>Mini Kids Games – ₹999 – ₹1,499</li>
+      </ul>
+  
+      <p style="color:#ccc; margin-top:20px; font-size:15px;">
+        *Final prices may vary based on distance, customization and event size.
+      </p>
+  
+    </div>
+  
+  </section>
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener("click", function(e) {
+        e.preventDefault();
+        
+        const target = document.querySelector(this.getAttribute("href"));
+        if (!target) return;
+    
+        window.scrollTo({
+          top: target.offsetTop - 80,  // adjusts for the sticky header
+          behavior: "smooth"
+        });
+      });
+    });
+    </script>
+    <!-- GOLD DIVIDER LINE BEFORE CONTACT -->
+<div class="gold-divider"></div>
+
+<!-- CONTACT SECTION -->
+<section id="contact" style="margin-top:40px; color:white;" class="fade-contact">
+
+  <h2 style="
+    font-size:40px;
+    margin:0 0 15px;
+    color:#FFD700;
+    font-weight:800;
+    text-align:left;
+  ">
+    Contact Details
+  </h2>
+
+  <p style="
+    text-align:left;
+    color:#ccc;
+    margin-bottom:25px;
+    font-size:18px;
+  ">
+    Reach out anytime — we reply instantly!
+  </p>
+
+  <div style="
+      max-width:900px;
+      margin:auto;
+      background:#ffffff10;
+      padding:25px;
+      border-radius:16px;
+      border:2px solid #d4af37;
+      box-shadow:0 0 15px rgba(212,175,55,0.3);
+  ">
+
+      <h3 style="color:#ffd86b;">📞 Phone / WhatsApp</h3>
+      <p style="color:#ddd; font-size:18px; display:flex; align-items:center;">
+        <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" class="icon">
+        <strong style="color:#FFD700;">+91 7305200920</strong>
+      </p>
+
+      <a href="https://wa.me/917305200920" target="_blank"
+         style="
+           display:inline-block;
+           padding:14px 22px;
+           background:#d4af37;
+           color:#000;
+           font-weight:700;
+           border-radius:12px;
+           text-decoration:none;
+           margin-bottom:22px;
+           box-shadow:0 0 14px rgba(212,175,55,0.7);
+         ">
+         💬 Chat on WhatsApp
+      </a>
+
+      <h3 style="color:#ffd86b;">📧 Email</h3>
+      <p style="color:#ccc; display:flex; align-items:center;">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" class="icon">
+        dharanidhasan7@gmail.com
+      </p>
+
+      <h3 style="color:#ffd86b;">📸 Instagram</h3>
+      <p style="color:#ccc; display:flex; align-items:center;">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" class="icon">
+        <a href="https://instagram.com/murugan_eventsanddecor" target="_blank" style="color:#FFD700; font-weight:600;">
+          @murugan_eventsanddecor
+        </a>
+      </p>
+
+      <h3 style="color:#ffd86b;">📍 Location</h3>
+      <p style="color:#ccc; display:flex; align-items:center;">
+        <img src="https://cdn-icons-png.flaticon.com/512/535/535188.png" class="icon">
+        Chennai, Tamil Nadu — Home service for all events
+      </p>
+
+  </div>
+
+</section>
+
+    <script>
+        function revealOnScroll() {
+          let section = document.querySelector('.fade-contact');
+          let pos = section.getBoundingClientRect().top;
+          let windowHeight = window.innerHeight;
+        
+          if (pos < windowHeight - 100) {
+            section.classList.add('show');
+          }
+        }
+        
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+        </script>
+        

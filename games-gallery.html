@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Games</title>
+
+<style>
+body {
+  background: #0b0b0b;
+  color: white;
+  font-family: Poppins, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #d4af37;
+  margin-bottom: 20px;
+  font-size: 34px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid rgba(255,255,255,0.06);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(212,175,55,0.6);
+}
+
+/* Fullscreen popup */
+.viewer {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.viewer img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+.viewer:active {
+  display: none;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Games</h1>
+
+<div class="gallery-grid">
+  <!-- Add your balloon images here -->
+  <img src="balloon1.jpg">
+  <img src="balloon2.jpg">
+  <img src="balloon3.jpg">
+  <img src="balloon4.jpg">
+  <img src="balloon5.jpg">
+  <img src="balloon6.jpg">
+</div>
+
+<!-- Fullscreen viewer -->
+<div class="viewer" id="viewer">
+  <img id="viewerImg">
+</div>
+
+<script>
+let viewer = document.getElementById("viewer");
+let viewerImg = document.getElementById("viewerImg");
+
+document.querySelectorAll(".gallery-grid img").forEach(img => {
+  img.onclick = () => {
+    viewer.style.display = "flex";
+    viewerImg.src = img.src;
+  };
+});
+
+viewer.onclick = () => viewer.style.display = "none";
+</script>
+
+</body>
+</html>
