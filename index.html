@@ -829,6 +829,36 @@ nav ul.show {
   }
 }
 }
+@media (max-width: 900px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background: rgba(0,0,0,0.85); /* transparent black */
+    backdrop-filter: blur(6px);
+    width: 100%;
+    padding: 18px 20px;
+    border-radius: 0 0 12px 12px; /* round at bottom */
+    position: absolute;
+    top: 100%; /* SHOW BELOW toggle */
+    left: 0;
+    z-index: 999;
+  }
+  .hamburger {
+  margin-top: 12px !important;
+  align-self: flex-start !important;
+}
+
+
+  nav ul.show {
+    display: flex;
+    animation: slideDownMenu 0.3s ease forwards;
+  }
+}
+
+@keyframes slideDownMenu {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
   </style>
 </head>
@@ -1171,14 +1201,16 @@ box-shadow:0 0 12px rgba(212,175,55,0.3);
     Reach out anytime — we reply instantly!
   </p>
 
-  <div style="
-      max-width:900px;
-      margin:auto;
-      background:#ffffff10;
-      padding:25px;
-      border-radius:16px;
-      border:2px solid #d4af37;
-      box-shadow:0 0 15px rgba(212,175,55,0.3);
+  <div class="contact-card" style="
+    max-width:900px;
+    margin:auto;
+    background:#ffffff10;
+    padding:25px;
+    border-radius:16px;
+    border:2px solid #d4af37;
+    box-shadow:0 0 15px rgba(212,175,55,0.3);
+">
+
   ">
 
       <h3 style="color:#ffd86b;">📞 Phone / WhatsApp</h3>
@@ -1246,5 +1278,13 @@ box-shadow:0 0 12px rgba(212,175,55,0.3);
               navMenu.classList.toggle("show");
             }
             </script>
+            <script>
+              document.querySelectorAll("nav ul li a").forEach(link => {
+                link.addEventListener("click", () => {
+                  document.querySelector("nav ul").classList.remove("show");
+                });
+              });
+              </script>
+              
             
         
