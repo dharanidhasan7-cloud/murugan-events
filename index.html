@@ -601,7 +601,7 @@ nav ul li a {
 }
 
 /* REMOVE RIGHT DEAD SPACE */
-body, html, main {
+body, html, main, section {
   max-width: 100% !important;
   overflow-x: hidden !important;
 }
@@ -710,7 +710,14 @@ body, html, main {
   margin-bottom: 20px !important;
 }
 
-
+/* Contact card */
+.contact-card {
+  width: 95% !important;
+  margin: 0 auto !important;
+  padding: 18px !important;
+  border-radius: 14px !important;
+  border: 2px solid #d4af37 !important;
+}
 
 /* Section group headings (Phone, Email, Insta, Location) */
 .contact-card h4 {
@@ -739,48 +746,121 @@ body, html, main {
   margin: 10px 0 15px !important;
 }
 }
+/* MOBILE MENU FIX */
+@media (max-width: 900px) {
 
+nav ul {
+  display: none;
+  flex-direction: column;
+  background: #0b0b0b;
+  width: 100%;
+  padding: 15px 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
 
-  
-/* ===== Mobile nav override — force dropdown down with transparent background ===== */
+nav ul.show {
+  display: flex;
+}
+
+nav ul li {
+  margin: 10px 0;
+}
+
+nav ul li a {
+  font-size: 18px !important;
+  color: #ffd86b !important;
+}
+}
+
+/* ---------------- MOBILE HEADER FIX ---------------- */
+@media (max-width: 768px) {
+
+/* Make header vertical stack */
+.nav {
+  flex-direction: column;
+  align-items: flex-start !important;
+  gap: 10px !important;
+}
+
+/* Logo left side normal */
+.brand {
+  width: 100%;
+}
+
+/* Move tagline under logo */
+.brand .muted {
+  margin-top: 6px;
+  font-size: 14px !important;
+}
+
+/* Book on WhatsApp button below tagline */
+.cta {
+  margin-top: 8px;
+  width: auto;
+}
+
+/* Put hamburger under the WhatsApp button */
+.hamburger {
+  display: block !important;
+  margin-top: 8px;
+  font-size: 26px !important;
+  color: #ffd86b !important;
+}
+
+/* Make nav menu appear BELOW hamburger */
+nav ul {
+  position: relative;
+  top: 10px;  /* pushes menu downward */
+}
+
+/* Slide down animation for menu */
+nav ul.show {
+  animation: slideDownMenu 0.3s ease forwards;
+}
+
+@keyframes slideDownMenu {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+}
 @media (max-width: 900px) {
   nav ul {
-    display: none !important;
-    flex-direction: column !important;
-    background: rgba(0,0,0,0.80) !important;
-    backdrop-filter: blur(6px) !important;
-    width: 100% !important;
-    padding: 18px 20px !important;
-    border-radius: 0 0 12px 12px !important;
-    position: absolute !important;
-    top: 100% !important; /* show below header */
-    left: 0 !important;
-    z-index: 999 !important;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    display: none;
+    flex-direction: column;
+    background: rgba(0,0,0,0.85); /* transparent black */
+    backdrop-filter: blur(6px);
+    width: 100%;
+    padding: 18px 20px;
+    border-radius: 0 0 12px 12px; /* round at bottom */
+    position: absolute;
+    top: 100%; /* SHOW BELOW toggle */
+    left: 0;
+    z-index: 999;
   }
+  .hamburger {
+  margin-top: 12px !important;
+  align-self: flex-start !important;
+}
+
 
   nav ul.show {
-    display: flex !important;
-    animation: slideDownMenu 0.28s ease forwards !important;
-  }
-
-  .hamburger {
-    display: block !important;
-    margin-top: 8px !important;
-    align-self: flex-start !important;
-    font-size: 26px !important;
-    color: #ffd86b !important;
-    background: transparent !important;
-    border: 0 !important;
+    display: flex;
+    animation: slideDownMenu 0.3s ease forwards;
   }
 }
 
 @keyframes slideDownMenu {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(-10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-</style>
+  </style>
 </head>
 <body>
   <header>
@@ -808,7 +888,9 @@ body, html, main {
           <a class="cta" href="https://wa.me/7305200920" target="_blank" rel="noopener">
             <strong>Book on WhatsApp</strong>
           </a>
+          
           <button class="hamburger" aria-label="menu" onclick="toggleNav()">☰</button>
+          </nav>
         </div>
       </div>
     </div>
@@ -1079,10 +1161,7 @@ box-shadow:0 0 12px rgba(212,175,55,0.3);
     </div>
   
   </section>
-  <script>
-    
-      
-    </script>
+  
     <!-- GOLD DIVIDER LINE BEFORE CONTACT -->
 <div class="gold-divider"></div>
 
@@ -1109,14 +1188,16 @@ box-shadow:0 0 12px rgba(212,175,55,0.3);
   </p>
 
   <div class="contact-card" style="
-      max-width:900px;
-      margin:auto;
-      background:#ffffff10;
-      padding:25px;
-      border-radius:16px;
-      border:2px solid #d4af37;
-      box-shadow:0 0 15px rgba(212,175,55,0.3);
-  ">
+    max-width:900px;
+    margin:auto;
+    background:#ffffff10;
+    padding:25px;
+    border-radius:16px;
+    border:2px solid #d4af37;
+    box-shadow:0 0 15px rgba(212,175,55,0.3);
+">
+
+  
 
       <h3 style="color:#ffd86b;">📞 Phone / WhatsApp</h3>
       <p style="color:#ddd; font-size:18px; display:flex; align-items:center;">
@@ -1177,69 +1258,48 @@ box-shadow:0 0 12px rgba(212,175,55,0.3);
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll();
         </script>
+        <script>
+            function toggleNav() {
+              const navMenu = document.querySelector("nav ul");
+              navMenu.classList.toggle("show");
+            }
+            </script>
+            <script>
+              document.querySelectorAll("nav ul li a").forEach(link => {
+                link.addEventListener("click", () => {
+                  document.querySelector("nav ul").classList.remove("show");
+                });
+              });
+              </script>
+              <script>
+                const menuLinks = document.querySelectorAll("nav ul li a");
+                const menu = document.querySelector("nav ul");
+                const headerHeight = 80; // adjust for sticky header
+                
+                menuLinks.forEach(link => {
+                  link.addEventListener("click", function(e) {
+                    e.preventDefault();
+                
+                    const target = document.querySelector(this.getAttribute("href"));
+                    if (!target) return;
+                
+                    // Smooth scroll animation
+                    window.scrollTo({
+                      top: target.offsetTop - headerHeight,
+                      behavior: "smooth"
+                    });
+                
+                    // Close mobile menu after clicking
+                    menu.classList.remove("show");
+                  });
+                });
+                
+                // Slide-down animation for mobile menu
+                function toggleNav() {
+                  menu.classList.toggle("show");
+                }
+                </script>
+                
+              
+            
         
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('nav ul li a').forEach(function(link){
-    link.addEventListener('click', function(){
-      var nav = document.querySelector('nav ul');
-      if(nav) nav.classList.remove('show');
-    });
-  });
-});
-
-function toggleNav(){ var nav=document.querySelector('nav ul'); if(nav) nav.classList.toggle('show'); }
-</script>
-<script>
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener("click", function(e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute("href"));
-      if (!target) return;
-  
-      const yOffset = -70;  // correct header height
-      const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
-  
-      window.scrollTo({ top: y, behavior: "smooth" });
-    });
-  });
-  </script>
-   <script>
-    document.querySelectorAll("nav ul li a").forEach(link => {
-      link.addEventListener("click", () => {
-        document.querySelector("nav ul").classList.remove("show");
-      });
-    });
-    </script>
-    </section>
-
-    <script>
-        function revealOnScroll() { ... }
-    </script>
-    
-    <script>
-        function toggleNav() { ... }
-    </script>
-<script>
-  document.querySelectorAll("nav ul li a").forEach(link => {
-    link.addEventListener("click", () => {
-      document.querySelector("nav ul").classList.remove("show");
-    });
-  });
-  </script>
-<script>
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener("click", function(e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute("href"));
-      if (!target) return;
-  
-      const yOffset = -70;  
-      const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
-  
-      window.scrollTo({ top: y, behavior: "smooth" });
-    });
-  });
-  </script>
-        
-  
