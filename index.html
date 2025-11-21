@@ -537,6 +537,215 @@ html {
   bottom: 20px;
 }
 
+/* -------- MOBILE FIXES -------- */
+@media (max-width: 768px) {
+
+/* NAVIGATION FIX */
+nav ul li a {
+  font-size: 13px;
+}
+
+.logo .name {
+  font-size: 26px;
+}
+
+.logo .sub {
+  font-size: 14px;
+}
+
+/* HERO FIX - MAKE 1 COLUMN ONLY */
+.hero {
+  grid-template-columns: 1fr !important;
+  gap: 20px !important;
+}
+
+/* HERO LEFT SECTION SPACING */
+.hero .intro {
+  padding: 18px !important;
+  margin-bottom: 10px;
+}
+
+/* QUICK CONTACT BOX FIX */
+.hero aside {
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
+/* WHY CHOOSE US FULL WIDTH */
+.why-box,
+.card {
+  width: 100% !important;
+}
+
+/* TEXT FIX */
+.lead {
+  font-size: 16px !important;
+  line-height: 1.55 !important;
+}
+
+/* BUTTON FIX */
+.btn {
+  padding: 10px 14px !important;
+  font-size: 15px !important;
+}
+
+/* GALLERY BUTTON FIX */
+.gallery-folder-btn {
+  width: 95% !important;
+  justify-content: flex-start;
+}
+
+.gallery-folder-btn img {
+  width: 45px;
+  height: 45px;
+}
+
+/* REMOVE RIGHT DEAD SPACE */
+body, html, main, section {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+}
+/* -------- SERVICES MOBILE FIX -------- */
+@media (max-width: 768px) {
+
+/* SERVICES TITLE FIX */
+#services h2 {
+  font-size: 28px !important;
+  text-align: left !important;
+  margin-bottom: 5px !important;
+}
+
+/* Description under title */
+#services > div .muted {
+  font-size: 14px !important;
+  margin-left: 0 !important;
+  margin-top: 2px !important;
+  text-align: left !important;
+  display: block !important;
+}
+
+/* SERVICES GRID FIX */
+.services {
+  grid-template-columns: 1fr !important;
+  gap: 14px !important;
+}
+
+/* SERVICE BOX FIX */
+.service {
+  width: 100% !important;
+  padding: 14px !important;
+  border-radius: 12px !important;
+  margin: 0 auto !important;
+}
+
+.service h4 {
+  font-size: 16px !important;
+  margin-bottom: 6px !important;
+}
+
+.service p {
+  font-size: 14px !important;
+  line-height: 1.45 !important;
+}
+}
+/* -------- GALLERY MOBILE FIX -------- */
+@media (max-width: 768px) {
+
+/* Gallery title spacing */
+#gallery h2 {
+  font-size: 32px !important;
+  margin-bottom: 5px !important;
+}
+
+#gallery p {
+  font-size: 15px !important;
+  margin-bottom: 18px !important;
+  line-height: 1.45 !important;
+}
+
+/* Make gallery buttons full width */
+.gallery-folder-btn {
+  width: 95% !important;
+  padding: 16px 20px !important;
+  margin: 10px auto !important;
+  display: flex !important;
+  gap: 12px !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+
+/* Thumbnail size */
+.gallery-folder-btn img {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+/* Text inside button */
+.gallery-folder-btn span,
+.gallery-folder-btn {
+  font-size: 15px !important;
+  line-height: 1.4 !important;
+}
+
+/* Remove right-side empty space */
+#gallery {
+  width: 100% !important;
+}
+}
+/* -------- CONTACT SECTION MOBILE FIX -------- */
+@media (max-width: 768px) {
+
+/* Contact title */
+#contact h2 {
+  font-size: 32px !important;
+  margin-bottom: 4px !important;
+  text-align: left !important;
+}
+
+/* Subtitle */
+#contact p {
+  font-size: 15px !important;
+  line-height: 1.45 !important;
+  margin-bottom: 20px !important;
+}
+
+/* Contact card */
+.contact-card {
+  width: 95% !important;
+  margin: 0 auto !important;
+  padding: 18px !important;
+  border-radius: 14px !important;
+  border: 2px solid #d4af37 !important;
+}
+
+/* Section group headings (Phone, Email, Insta, Location) */
+.contact-card h4 {
+  margin-top: 18px !important;
+  margin-bottom: 6px !important;
+  font-size: 17px !important;
+}
+
+/* Icon list spacing */
+.contact-card p,
+.contact-card a {
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+}
+
+/* WhatsApp Button */
+.wa-btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  width: 100% !important;
+  padding: 12px !important;
+  border-radius: 12px !important;
+  font-size: 15px !important;
+  margin: 10px 0 15px !important;
+}
+}
 
 
   </style>
