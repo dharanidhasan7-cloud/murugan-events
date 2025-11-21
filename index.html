@@ -746,6 +746,31 @@ body, html, main, section {
   margin: 10px 0 15px !important;
 }
 }
+/* MOBILE MENU FIX */
+@media (max-width: 900px) {
+
+nav ul {
+  display: none;
+  flex-direction: column;
+  background: #0b0b0b;
+  width: 100%;
+  padding: 15px 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+nav ul.show {
+  display: flex;
+}
+
+nav ul li {
+  margin: 10px 0;
+}
+
+nav ul li a {
+  font-size: 18px !important;
+  color: #ffd86b !important;
+}
+}
 
 
   </style>
@@ -1156,4 +1181,11 @@ box-shadow:0 0 12px rgba(212,175,55,0.3);
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll();
         </script>
+        <script>
+            function toggleNav() {
+              const navMenu = document.querySelector("nav ul");
+              navMenu.classList.toggle("show");
+            }
+            </script>
+            
         
