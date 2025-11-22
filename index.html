@@ -16,6 +16,21 @@ Instructions: Save this file as `index.html`. Replace placeholders (images, phon
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
+    body {
+  background:
+    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)),
+    url("background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+
+
+
+
    
 
     :root{
@@ -92,7 +107,7 @@ nav ul li a:active {
 
 
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:linear-gradient(180deg, var(--bg), #050505);color:#fff}
+    html,body{height:100%;margin:0;color:#fff}
     a{color:var(--gold);text-decoration:none}
     .container{max-width:var(--max-w);margin:0 auto;padding:28px}
 
@@ -400,9 +415,7 @@ nav ul {
 .card {
   box-shadow: 0 0 12px rgba(212, 175, 55, 0.18) !important;
 }
-body, html {
-  background: #0b0b0b !important;
-}
+
 
 main, section, .hero {
   background: transparent !important;
@@ -1313,5 +1326,4 @@ links.forEach(link => {
       window.addEventListener('scroll', revealOnScroll);
       revealOnScroll();
       </script>
-      
     
